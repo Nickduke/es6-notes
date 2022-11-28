@@ -60,26 +60,26 @@ const big = numbers.filter((number) => number > 2);
 
 // reg function: 'this' arefers to parent, left of the '.'
 // arrow function: refers to it's current surrounding scope
-const bob = {
-  firstName: 'bob',
-  lastName: 'smith',
-  sayName() {
-    console.log(this);
-    setTimeout(() => {
-      console.log(this);
-      console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
-    }, 2000);
-  },
-};
+// const bob = {
+//   firstName: 'bob',
+//   lastName: 'smith',
+//   sayName() {
+//     // console.log(this);
+//     setTimeout(() => {
+//       // console.log(this);
+//       // console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+//     }, 2000);
+//   },
+// };
 const anna = {
   firstName: 'anna',
   lastName: 'sanders',
   sayName: () => {
-    console.log(this);
-    console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+    // console.log(this);
+    // console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
   },
 };
-bob.sayName();
+// bob.sayName();
 // anna.sayName();
 
 // points to button
@@ -109,3 +109,24 @@ const sayHello = (person = 'Susan') => {
   // console.log(`hello ${person}`);
 };
 sayHello();
+
+/////// Array destructuring /////
+// faster/easier way to access/unpack and assign values from arrays
+const fruits = ['orange', 'banana', 'lemon'];
+const friends = ['john', 'peter', 'kelly'];
+
+// standard way
+const orange = fruits[0];
+
+// destructuring
+// ,, to skip value (skipping peter)
+const [j, , kelly] = friends;
+console.log(j, kelly);
+
+// swap variables
+let first = 'bob';
+let second = 'john';
+
+[second, first] = [first, second];
+
+console.log(first);
