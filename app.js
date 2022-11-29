@@ -149,18 +149,61 @@
 // } = rick;
 // console.log(firstName, last, city, zip, sister);
 
-/////// Destructuring function params /////
-const rick = {
-  first: 'rick',
-  last: 'henry',
-  city: 'chicago',
-  siblings: {
-    sister: 'jane',
-  },
-};
+// /////// Destructuring function params /////
+// const rick = {
+//   first: 'rick',
+//   last: 'henry',
+//   city: 'chicago',
+//   siblings: {
+//     sister: 'jane',
+//   },
+// };
 
-function printPerson({ first, last, city, siblings: { sister } }) {
-  console.log(first, last, city, sister);
-}
+// function printPerson({ first, last, city, siblings: { sister } }) {
+//   console.log(first, last, city, sister);
+// }
 
-printPerson(rick);
+// printPerson(rick);
+
+// // /////// For of loop /////
+// // loops through the values of an iterble object
+// // unlike forEach, we can use break, continue
+
+// const fruits = ['apple', 'orange', 'banana', 'peach'];
+// const longName = 'John Smith Pepper III';
+// let shortName = '';
+
+// for (const letter of longName) {
+//   // console.log(letter);
+//   if (letter === ' ') {
+//     continue;
+//   } else {
+//     shortName += letter;
+//   }
+// }
+// // console.log(shortName);
+
+// for (const fruit of fruits) {
+//   if (fruit === 'banana') {
+//     break;
+//     // continue;
+//   }
+//   // console.log(fruit);
+// }
+
+// // /////// Spread Operator /////
+// Allows an iterable to spread/expand indivdually inside a receiver
+// Split into single items and copy them
+const udemy = 'udemy';
+const letters = [...udemy];
+// console.log(letters);
+
+const boys = ['john', 'peter', 'bob'];
+const girls = ['susan', 'anna', 'sara'];
+const bestFriend = 'arnold';
+
+const friends = [...boys, ...girls, bestFriend];
+// console.log(friends);
+
+const newFriends = [...friends];
+// console.log(newFriends);
