@@ -284,21 +284,58 @@
 // }
 // countTotal(67, 89, 101);
 
-// DOM elements/nodeList
+// // DOM elements/nodeList
+// // long way
+// const p = document.querySelectorAll('p');
+// const result = document.querySelector('#result');
+// const second = document.querySelector('#second');
+
+// let newText = Array.from(p);
+// newText = newText.map((item) => `<span>${item.textContent}</span>`).join(' ');
+
+// result.innerHTML = newText;
+
+// // best way
+// // Array.from's second argument is essentially a map callback function
+// const text = Array.from(document.querySelectorAll('p'), (item) => {
+//   return `<span>${item.textContent}</span>`;
+// }).join(' ');
+
+// second.innerHTML = text;
+
+// /////// Find, findIndex, every, some /////
+const people = [
+  { id: 1, name: 'john' },
+  { id: 2, name: 'peter' },
+  { id: 3, name: 'anna' },
+];
+
+const grades = ['A', 'B', 'A', 'B', 'C'];
+const goodGrades = ['A', 'B', 'A', 'B'];
+
+//
 // long way
-const p = document.querySelectorAll('p');
-const result = document.querySelector('#result');
-const second = document.querySelector('#second');
+// const anna = people.filter((person) => person.name === 'anna');
+// console.log(anna);
+// console.log(anna[0].name);
+// console.log(anna[0].id);
+// would have to do this
+// console.log(...anna);
 
-let newText = Array.from(p);
-newText = newText.map((item) => `<span>${item.textContent}</span>`).join(' ');
+// find
+// // best way to access object only, not array
+// const anna = people.find((person) => person.name === 'anna');
+// console.log(anna);
 
-result.innerHTML = newText;
+const person = people.findIndex((item) => item.id === 3);
+console.log(person);
+const newPeople = people.slice(0, person);
+console.log(newPeople);
 
-// best way
-// Array.from's second argument is essentially a map callback function
-const text = Array.from(document.querySelectorAll('p'), (item) => {
-  return `<span>${item.textContent}</span>`;
-}).join(' ');
+// every - every item in the array
+const allGoodGrades = goodGrades.every((grade) => grade !== 'C');
+console.log(allGoodGrades);
 
-second.innerHTML = text;
+// Some - at least one item
+const oneBadGrade = grades.some((grade) => grade === 'C');
+console.log(oneBadGrade);
