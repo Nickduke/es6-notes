@@ -194,6 +194,8 @@
 // // /////// Spread Operator /////
 // Allows an iterable to spread/expand indivdually inside a receiver
 // Split into single items and copy them
+
+// arrays
 const udemy = 'udemy';
 const letters = [...udemy];
 // console.log(letters);
@@ -207,3 +209,28 @@ const friends = [...boys, ...girls, bestFriend];
 
 const newFriends = [...friends];
 // console.log(newFriends);
+
+// objects
+const person = { name: 'john', job: 'developer' };
+const newPerson = { ...person, city: 'toronto', name: 'peter' };
+// console.log(newPerson);
+// console.log(person);
+
+// dom elements
+const headings = document.querySelectorAll('h1');
+const result = document.getElementById('result');
+const text = [...headings]
+  .map((item) => `<span>${item.textContent}</span>`)
+  .join(' ');
+result.innerHTML = text;
+
+// functions and arguments
+const numbers = [23, 45, 66, 88, 2345];
+// console.log(Math.max(...numbers));
+
+const john = ['john', 'sanders'];
+const sayHello = (name, lastName) => {
+  // console.log(`Hello ${name} ${lastName}`);
+};
+
+sayHello(...john);
