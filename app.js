@@ -413,7 +413,41 @@
 // const isValue = unique.has(4);
 // console.log(isValue);
 
-// new Set() - accepts iterable object
+// // new Set() - accepts iterable object
+// const products = [
+//   {
+//     title: 'high-back bench',
+//     company: 'ikea',
+//   },
+//   {
+//     title: 'albany table',
+//     company: 'marcos',
+//   },
+//   {
+//     title: 'accent chair',
+//     company: 'caressa',
+//   },
+//   {
+//     title: 'wooden table',
+//     company: 'ikea',
+//   },
+// ];
+
+// // const companies = products.map((item) => item.company);
+// // console.log(companies);
+
+// // const uniqueCompanies = new Set(companies);
+// // console.log(uniqueCompanies);
+
+// // const finalCompanies = [...uniqueCompanies, 'other store'];
+// // console.log(finalCompanies);
+
+// // one liner
+// const result = ['all', ...new Set(products.map((item) => item.company))];
+// console.log(result);
+
+// // // /////// includes()  /////
+// checks if a string contains another string (case sensitive)
 const products = [
   {
     title: 'high-back bench',
@@ -432,16 +466,30 @@ const products = [
     company: 'ikea',
   },
 ];
+// string includes
+// // const firstName = 'john';
+// // const result = firstName.includes('peter');
+// // console.log(result);
 
-// const companies = products.map((item) => item.company);
-// console.log(companies);
+// const product = {
+//   title: 'high-back bench',
+// };
+// const result = product.title.includes('high');
+// console.log(result);
 
-// const uniqueCompanies = new Set(companies);
-// console.log(uniqueCompanies);
+const text = 'oo';
 
-// const finalCompanies = [...uniqueCompanies, 'other store'];
-// console.log(finalCompanies);
+const filteredProducts = products.filter((product) =>
+  product.title.includes(text)
+);
 
-// one liner
-const result = ['all', ...new Set(products.map((item) => item.company))];
-console.log(result);
+console.log(filteredProducts);
+
+// array inclues
+// check if item is in array
+// useful in conditional statements
+const groceries = ['milk', 'bread', 'meat'];
+let randomItem = 'milk';
+const isIncluded = groceries.includes(randomItem, 1);
+// false because we are starting the check at the 1st index and milk's index is 0
+console.log(isIncluded);
