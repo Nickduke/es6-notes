@@ -235,30 +235,51 @@
 
 // sayHello(...john);
 
-// // // /////// Rest Operator /////
-// gathers/collects the items
+// // // // /////// Rest Operator /////
+// // gathers/collects the items
 
-// arrays
-const fruit = ['apple', 'orange', 'lemon'];
-// const [first, second, ...rest] = fruit;
-// console.log(first, second, rest);
+// // arrays
+// const fruit = ['apple', 'orange', 'lemon'];
+// // const [first, second, ...rest] = fruit;
+// // console.log(first, second, rest);
 
-// objects
-const person = { name: 'john', lastName: 'smith', job: 'developer' };
-const { job, ...rest } = person;
-// console.log(job, rest);
+// // objects
+// const person = { name: 'john', lastName: 'smith', job: 'developer' };
+// const { job, ...rest } = person;
+// // console.log(job, rest);
 
-const testScores = [78, 90, 100, 90, 99, 65];
+// const testScores = [78, 90, 100, 90, 99, 65];
 
-// function params
-const getAverage = (name, ...scores) => {
-  // console.log(name, scores);
-  let total = 0;
-  for (const score of scores) {
-    total += score;
-  }
-  console.log(`${name}'s average score is ${total / scores.length}`);
-};
+// // function params
+// const getAverage = (name, ...scores) => {
+//   // console.log(name, scores);
+//   let total = 0;
+//   for (const score of scores) {
+//     total += score;
+//   }
+//   console.log(`${name}'s average score is ${total / scores.length}`);
+// };
 
-getAverage(person.name, 78, 90, 100, 90);
-getAverage(person.name, ...testScores);
+// getAverage(person.name, 78, 90, 100, 90);
+// getAverage(person.name, ...testScores);
+
+// // // // /////// Array.of, Array.from /////
+// not on the prototype
+// of creates a new Array instance from variable number of arguments
+const friends = Array.of('john', 10, true);
+// console.log(friends);
+
+// from returns Array object from any object with a length prop or iterable object
+// from turns array-like/ish into array (strings, nodeList, Set, etc)
+const udemy = 'udemy';
+// console.log(Array.from(udemy));
+
+function countTotal() {
+  // console.log(arguments);
+  let total = Array.from(arguments).reduce(
+    (total, currentNumber) => (total += currentNumber),
+    0
+  );
+  console.log(total);
+}
+countTotal(67, 89, 101);
