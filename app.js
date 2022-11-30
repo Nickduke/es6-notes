@@ -340,43 +340,108 @@
 // const oneBadGrade = grades.some((grade) => grade === 'C');
 // console.log(oneBadGrade);
 
-// /////// For in /////
-// for in loop - iterates over an object's properties
-// not advised to use on arrays, especially if the order is important
-// on array use for of loop instead
-const person = {
-  name: 'john',
-  age: 25,
-  status: 'student',
-};
+// // /////// For in /////
+// // for in loop - iterates over an object's properties
+// // not advised to use on arrays, especially if the order is important
+// // on array use for of loop instead
+// const person = {
+//   name: 'john',
+//   age: 25,
+//   status: 'student',
+// };
 
-for (const propertyName in person) {
-  console.log(`${propertyName} : ${person[propertyName]}`);
-}
+// for (const propertyName in person) {
+//   console.log(`${propertyName} : ${person[propertyName]}`);
+// }
 
-// CONVERT OBJECTS INTO ARRAYS
-// Object.keys() - converts prop names into array
-const keys = Object.keys(person);
-console.log(keys);
+// // CONVERT OBJECTS INTO ARRAYS
+// // Object.keys() - converts prop names into array
+// const keys = Object.keys(person);
+// console.log(keys);
 
-// Object.values() - converts prop values into array
-const values = Object.values(person);
-console.log(values);
+// // Object.values() - converts prop values into array
+// const values = Object.values(person);
+// console.log(values);
 
-// Object.entries() - converts both
-const result = Object.entries(person);
+// // Object.entries() - converts both
+// const result = Object.entries(person);
+// console.log(result);
+
+// // map method
+// const newResult = result.map((item) => {
+//   const [first, second] = item;
+//   return first;
+// });
+
+// console.log(newResult);
+
+// // for of
+// for (const item of result) {
+//   const [first, second] = item;
+//   console.log(first, second);
+// }
+
+// // // /////// Set object  /////
+// // stores a collection of uniwue values of any type
+// // new Set()
+// // iterators
+// // entries(), keys(), values(), forEach()
+
+// const unique = new Set();
+
+// // add(value)
+// // will only store one value since they are not unique
+// unique.add('first');
+// unique.add('first');
+// console.log(unique);
+
+// // delete(value)
+// // false due to value not existing
+// const result = unique.delete('third');
+// console.log(result);
+
+// // clear()
+// // removes all items from set
+// unique.add('second');
+// console.log(unique);
+
+// unique.clear();
+// console.log(unique);
+
+// // has(value
+// // check whether ir not item is in the set and returns boolean value
+// const isValue = unique.has(4);
+// console.log(isValue);
+
+// new Set() - accepts iterable object
+const products = [
+  {
+    title: 'high-back bench',
+    company: 'ikea',
+  },
+  {
+    title: 'albany table',
+    company: 'marcos',
+  },
+  {
+    title: 'accent chair',
+    company: 'caressa',
+  },
+  {
+    title: 'wooden table',
+    company: 'ikea',
+  },
+];
+
+// const companies = products.map((item) => item.company);
+// console.log(companies);
+
+// const uniqueCompanies = new Set(companies);
+// console.log(uniqueCompanies);
+
+// const finalCompanies = [...uniqueCompanies, 'other store'];
+// console.log(finalCompanies);
+
+// one liner
+const result = ['all', ...new Set(products.map((item) => item.company))];
 console.log(result);
-
-// map method
-const newResult = result.map((item) => {
-  const [first, second] = item;
-  return first;
-});
-
-console.log(newResult);
-
-// for of
-for (const item of result) {
-  const [first, second] = item;
-  console.log(first, second);
-}
