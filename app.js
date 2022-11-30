@@ -191,46 +191,74 @@
 //   // console.log(fruit);
 // }
 
-// // /////// Spread Operator /////
-// Allows an iterable to spread/expand indivdually inside a receiver
-// Split into single items and copy them
+// // // /////// Spread Operator /////
+// // Allows an iterable to spread/expand indivdually inside a receiver
+// // Split into single items and copy them
+
+// // arrays
+// const udemy = 'udemy';
+// const letters = [...udemy];
+// // console.log(letters);
+
+// const boys = ['john', 'peter', 'bob'];
+// const girls = ['susan', 'anna', 'sara'];
+// const bestFriend = 'arnold';
+
+// const friends = [...boys, ...girls, bestFriend];
+// // console.log(friends);
+
+// const newFriends = [...friends];
+// // console.log(newFriends);
+
+// // objects
+// const person = { name: 'john', job: 'developer' };
+// const newPerson = { ...person, city: 'toronto', name: 'peter' };
+// // console.log(newPerson);
+// // console.log(person);
+
+// // dom elements
+// const headings = document.querySelectorAll('h1');
+// const result = document.getElementById('result');
+// const text = [...headings]
+//   .map((item) => `<span>${item.textContent}</span>`)
+//   .join(' ');
+// result.innerHTML = text;
+
+// // functions and arguments
+// const numbers = [23, 45, 66, 88, 2345];
+// // console.log(Math.max(...numbers));
+
+// const john = ['john', 'sanders'];
+// const sayHello = (name, lastName) => {
+//   // console.log(`Hello ${name} ${lastName}`);
+// };
+
+// sayHello(...john);
+
+// // // /////// Rest Operator /////
+// gathers/collects the items
 
 // arrays
-const udemy = 'udemy';
-const letters = [...udemy];
-// console.log(letters);
-
-const boys = ['john', 'peter', 'bob'];
-const girls = ['susan', 'anna', 'sara'];
-const bestFriend = 'arnold';
-
-const friends = [...boys, ...girls, bestFriend];
-// console.log(friends);
-
-const newFriends = [...friends];
-// console.log(newFriends);
+const fruit = ['apple', 'orange', 'lemon'];
+// const [first, second, ...rest] = fruit;
+// console.log(first, second, rest);
 
 // objects
-const person = { name: 'john', job: 'developer' };
-const newPerson = { ...person, city: 'toronto', name: 'peter' };
-// console.log(newPerson);
-// console.log(person);
+const person = { name: 'john', lastName: 'smith', job: 'developer' };
+const { job, ...rest } = person;
+// console.log(job, rest);
 
-// dom elements
-const headings = document.querySelectorAll('h1');
-const result = document.getElementById('result');
-const text = [...headings]
-  .map((item) => `<span>${item.textContent}</span>`)
-  .join(' ');
-result.innerHTML = text;
+const testScores = [78, 90, 100, 90, 99, 65];
 
-// functions and arguments
-const numbers = [23, 45, 66, 88, 2345];
-// console.log(Math.max(...numbers));
-
-const john = ['john', 'sanders'];
-const sayHello = (name, lastName) => {
-  // console.log(`Hello ${name} ${lastName}`);
+// function params
+const getAverage = (name, ...scores) => {
+  // console.log(name, scores);
+  let total = 0;
+  for (const score of scores) {
+    total += score;
+  }
+  console.log(`${name}'s average score is ${total / scores.length}`);
 };
 
-sayHello(...john);
+getAverage(person.name, 78, 90, 100, 90);
+getAverage(person.name, ...testScores);
