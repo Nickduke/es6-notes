@@ -264,22 +264,41 @@
 // getAverage(person.name, ...testScores);
 
 // // // // /////// Array.of, Array.from /////
-// not on the prototype
-// of creates a new Array instance from variable number of arguments
-const friends = Array.of('john', 10, true);
-// console.log(friends);
+// // not on the prototype
+// // of creates a new Array instance from variable number of arguments
+// const friends = Array.of('john', 10, true);
+// // console.log(friends);
 
-// from returns Array object from any object with a length prop or iterable object
-// from turns array-like/ish into array (strings, nodeList, Set, etc)
-const udemy = 'udemy';
-// console.log(Array.from(udemy));
+// // from returns Array object from any object with a length prop or iterable object
+// // from turns array-like/ish into array (strings, nodeList, Set, etc)
+// const udemy = 'udemy';
+// // console.log(Array.from(udemy));
 
-function countTotal() {
-  // console.log(arguments);
-  let total = Array.from(arguments).reduce(
-    (total, currentNumber) => (total += currentNumber),
-    0
-  );
-  console.log(total);
-}
-countTotal(67, 89, 101);
+// function countTotal() {
+//   // console.log(arguments);
+//   let total = Array.from(arguments).reduce(
+//     (total, currentNumber) => (total += currentNumber),
+//     0
+//   );
+//   console.log(total);
+// }
+// countTotal(67, 89, 101);
+
+// DOM elements/nodeList
+// long way
+const p = document.querySelectorAll('p');
+const result = document.querySelector('#result');
+const second = document.querySelector('#second');
+
+let newText = Array.from(p);
+newText = newText.map((item) => `<span>${item.textContent}</span>`).join(' ');
+
+result.innerHTML = newText;
+
+// best way
+// Array.from's second argument is essentially a map callback function
+const text = Array.from(document.querySelectorAll('p'), (item) => {
+  return `<span>${item.textContent}</span>`;
+}).join(' ');
+
+second.innerHTML = text;
