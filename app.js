@@ -446,50 +446,102 @@
 // const result = ['all', ...new Set(products.map((item) => item.company))];
 // console.log(result);
 
-// // // /////// includes()  /////
-// checks if a string contains another string (case sensitive)
-const products = [
-  {
-    title: 'high-back bench',
-    company: 'ikea',
-  },
-  {
-    title: 'albany table',
-    company: 'marcos',
-  },
-  {
-    title: 'accent chair',
-    company: 'caressa',
-  },
-  {
-    title: 'wooden table',
-    company: 'ikea',
-  },
-];
-// string includes
-// // const firstName = 'john';
-// // const result = firstName.includes('peter');
+// // // // /////// includes()  /////
+// // checks if a string contains another string (case sensitive)
+// const products = [
+//   {
+//     title: 'high-back bench',
+//     company: 'ikea',
+//   },
+//   {
+//     title: 'albany table',
+//     company: 'marcos',
+//   },
+//   {
+//     title: 'accent chair',
+//     company: 'caressa',
+//   },
+//   {
+//     title: 'wooden table',
+//     company: 'ikea',
+//   },
+// ];
+// // string includes
+// // // const firstName = 'john';
+// // // const result = firstName.includes('peter');
+// // // console.log(result);
+
+// // const product = {
+// //   title: 'high-back bench',
+// // };
+// // const result = product.title.includes('high');
 // // console.log(result);
 
-// const product = {
-//   title: 'high-back bench',
-// };
-// const result = product.title.includes('high');
-// console.log(result);
+// const text = 'oo';
 
-const text = 'oo';
+// const filteredProducts = products.filter((product) =>
+//   product.title.includes(text)
+// );
 
-const filteredProducts = products.filter((product) =>
-  product.title.includes(text)
-);
+// console.log(filteredProducts);
 
-console.log(filteredProducts);
+// // array inclues
+// // check if item is in array
+// // useful in conditional statements
+// const groceries = ['milk', 'bread', 'meat'];
+// let randomItem = 'milk';
+// const isIncluded = groceries.includes(randomItem, 1);
+// // false because we are starting the check at the 1st index and milk's index is 0
+// console.log(isIncluded);
 
-// array inclues
-// check if item is in array
-// useful in conditional statements
-const groceries = ['milk', 'bread', 'meat'];
-let randomItem = 'milk';
-const isIncluded = groceries.includes(randomItem, 1);
-// false because we are starting the check at the 1st index and milk's index is 0
-console.log(isIncluded);
+// // // // /////// Async js  /////
+// make soup
+// boil water 10min
+// chop carrots
+// add carrots to boil for 5mins
+// chop onion
+// add onion to boil for 5mina
+// BROWSER fetch data, get GeoLocation, setTimeout, setTimer, etc
+
+// setTimeout for async behaviour
+// callback hell
+boilWater();
+console.log('chop carrots');
+
+function boilWater() {
+  console.log('boiling...');
+  setTimeout(() => {
+    console.log('done');
+    console.log('add carrots');
+    setTimeout(() => {
+      console.log('carrots are done');
+      console.log('add onion');
+      setTimeout(() => {
+        console.log('onion done');
+      }, 5000);
+    }, 5000);
+    console.log('chop onion');
+  }, 10000);
+}
+
+// callsbacks, promises, async/await
+const heading1 = document.querySelector('.one');
+const heading2 = document.querySelector('.two');
+const heading3 = document.querySelector('.three');
+const btn = document.querySelector('.btn');
+
+// have been using async all along
+btn.addEventListener('click', () => {
+  // console.log('you clicked the button');
+  setTimeout(() => {
+    heading1.style.color = 'red';
+    setTimeout(() => {
+      heading2.style.color = 'green';
+      setTimeout(() => {
+        heading3.style.color = 'blue';
+      }, 1000);
+    }, 1000);
+  }, 1000);
+});
+// runs first
+// console.log(`I am second`);
