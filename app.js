@@ -494,54 +494,75 @@
 // // false because we are starting the check at the 1st index and milk's index is 0
 // console.log(isIncluded);
 
-// // // // /////// Async js  /////
-// make soup
-// boil water 10min
-// chop carrots
-// add carrots to boil for 5mins
-// chop onion
-// add onion to boil for 5mina
-// BROWSER fetch data, get GeoLocation, setTimeout, setTimer, etc
+// // // // // /////// Async js  /////
+// // make soup
+// // boil water 10min
+// // chop carrots
+// // add carrots to boil for 5mins
+// // chop onion
+// // add onion to boil for 5mina
+// // BROWSER fetch data, get GeoLocation, setTimeout, setTimer, etc
 
-// setTimeout for async behaviour
-// callback hell
-boilWater();
-console.log('chop carrots');
+// // setTimeout for async behaviour
+// // callback hell
+// boilWater();
+// console.log('chop carrots');
 
-function boilWater() {
-  console.log('boiling...');
-  setTimeout(() => {
-    console.log('done');
-    console.log('add carrots');
-    setTimeout(() => {
-      console.log('carrots are done');
-      console.log('add onion');
-      setTimeout(() => {
-        console.log('onion done');
-      }, 5000);
-    }, 5000);
-    console.log('chop onion');
-  }, 10000);
-}
+// function boilWater() {
+//   console.log('boiling...');
+//   setTimeout(() => {
+//     console.log('done');
+//     console.log('add carrots');
+//     setTimeout(() => {
+//       console.log('carrots are done');
+//       console.log('add onion');
+//       setTimeout(() => {
+//         console.log('onion done');
+//       }, 5000);
+//     }, 5000);
+//     console.log('chop onion');
+//   }, 10000);
+// }
 
-// callsbacks, promises, async/await
+// // callbacks, promises, async/await
 const heading1 = document.querySelector('.one');
 const heading2 = document.querySelector('.two');
 const heading3 = document.querySelector('.three');
 const btn = document.querySelector('.btn');
 
-// have been using async all along
+// // have been using async all along
+// btn.addEventListener('click', () => {
+//   // console.log('you clicked the button');
+//   setTimeout(() => {
+//     heading1.style.color = 'red';
+//     setTimeout(() => {
+//       heading2.style.color = 'green';
+//       setTimeout(() => {
+//         heading3.style.color = 'blue';
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// });
+// // runs first
+// // console.log(`I am second`);
+
+// Promises - pending, resolved, rejected
+// then catch - pass another callback
+// think of promise as a receipt - you pay then they give you a reciept, promising you your food upon completion
 btn.addEventListener('click', () => {
-  // console.log('you clicked the button');
-  setTimeout(() => {
-    heading1.style.color = 'red';
-    setTimeout(() => {
-      heading2.style.color = 'green';
-      setTimeout(() => {
-        heading3.style.color = 'blue';
-      }, 1000);
-    }, 1000);
-  }, 1000);
+  const promise = new Promise((resolve, reject) => {
+    let value = true;
+    if (value) {
+      resolve('hey value is true');
+    } else {
+      reject(`there was an error, value is false`);
+    }
+  });
+  promise
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
-// runs first
-// console.log(`I am second`);
