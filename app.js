@@ -546,23 +546,77 @@ const btn = document.querySelector('.btn');
 // // runs first
 // // console.log(`I am second`);
 
-// Promises - pending, resolved, rejected
-// then catch - pass another callback
-// think of promise as a receipt - you pay then they give you a reciept, promising you your food upon completion
-btn.addEventListener('click', () => {
-  const promise = new Promise((resolve, reject) => {
-    let value = true;
-    if (value) {
-      resolve('hey value is true');
+// // Promises - pending, resolved, rejected
+// // then catch - pass another callback
+// // think of promise as a receipt - you pay then they give you a reciept, promising you your food upon completion
+// btn.addEventListener('click', () => {
+//   const promise = new Promise((resolve, reject) => {
+//     let value = true;
+//     if (value) {
+//       resolve('hey value is true');
+//     } else {
+//       reject(`there was an error, value is false`);
+//     }
+//   });
+//   promise
+//     .then((data) => {
+//       console.log(data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
+// // PROMISE METHOD
+// btn.addEventListener('click', () => {
+//   addColor(1000, heading1, 'red').then(() =>
+//     addColor(2000, heading2, 'blue').then(() =>
+//       addColor(1000, heading3, 'green')
+//     )
+//   );
+// });
+// function addColor(time, element, color) {
+//   return new Promise((resolve, reject) => {
+//     if (element) {
+//       setTimeout(() => {
+//         element.style.color = color;
+//         resolve();
+//       }, time);
+//     } else {
+//       reject(new Error(`there is no such element ${element}`));
+//     }
+//   });
+// }
+
+// // // // // /////// ASYNC/AWAIT METHOD  /////
+// musy have async
+// await waits till the promise is settled
+
+btn.addEventListener('click', async () => {
+  const result = await displayColor();
+  console.log(result);
+});
+
+async function displayColor() {
+  try {
+    await addColor(1000, heading1, 'red');
+    await addColor(1000, heading2, 'green');
+    await addColor(1000, heading3, 'blue');
+  } catch (error) {
+    console.log(error);
+  }
+  return 'hello';
+}
+
+function addColor(time, element, color) {
+  return new Promise((resolve, reject) => {
+    if (element) {
+      setTimeout(() => {
+        element.style.color = color;
+        resolve();
+      }, time);
     } else {
-      reject(`there was an error, value is false`);
+      reject(new Error(`there is no such element ${element}`));
     }
   });
-  promise
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+}
